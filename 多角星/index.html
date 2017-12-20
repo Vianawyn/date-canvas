@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多角星</title>
+</head>
+<body>
+	<div>
+        <canvas width="300" height="300"></canvas>
+    </div> 
+</body>
+</html>
+<script>
+	let canvas = document.querySelector('canvas'),
+        ctx = canvas.getContext("2d");
+	function star(ctx,x,y,s,n){
+		let dx=x;
+		let dy=y;
+		let ds=s;
+		let num=n;
+		ctx.beginPath();
+		ctx.fillStyle="red";
+		let deg=Math.PI/num*4;
+		for(let i=0;i<num;i++){
+		    let x=Math.sin(i*deg);
+		    let y=Math.cos(i*deg);
+		    ctx.lineTo(dx+x*ds,dy+y*ds);
+		}
+		ctx.closePath();
+		ctx.fill();
+	}
+	star(ctx,200,100,100,5);
+</script>

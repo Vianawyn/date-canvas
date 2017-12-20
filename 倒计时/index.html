@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>时间对象</title>
+</head>
+<style>
+	div{
+		margin: 0 auto;
+	}
+</style>
+<body>
+	<!-- 格林尼治时间  GMT
+	世界协调时  UTC
+	1970年1月1日0时0分0秒开始   有范围：28万多 -->
+	<!-- <div>距圣诞还有：
+		<span></span>天
+		<span></span>时
+		<span></span>分
+		<span></span>秒
+	</div> -->
+	<div>倒计时：
+		<span></span>分
+		<span></span>秒
+	</div>
+</body>
+</html>
+<script src="function.js"></script>
+<script>
+	$(function(){
+		// 实例化日期对象
+		// let date = new Date('12/22/2017 14:00:00');
+		//不传参获取当前时间
+		//传参可设置时间
+		// let date = new Date('2017,12,20,14,00,00');
+		//设置月份时要减1   eg:目标日期：12月，设置日期：11月
+		// console.dir(date);
+
+		//日期方法
+		//获取
+		// date.getMonth();//0~11月  设置减1，获取加1
+		// date.getDate();//号
+		// date.getDay();//周
+		// date.getTime();//时间戳：1970年到当前时间用的毫秒数
+		// date.getTimeZoneOffset();//与0时区的时差
+		// 设置
+		// 没有setDay
+		// let date = new Date();
+		// date.setFullYear(2018);
+		// date.setMonth(11);
+		// date.setDate(25);
+		// console.dir(date);
+		
+		//倒计时
+		//目标时间
+		// let s = document.querySelectorAll('span');
+		// let date = new Date(2017,11,25,0,0,0);
+		// move();
+		// setInterval(move,1000)
+		// function move(){
+		// 	let arr = [];
+		// 	//当前时间
+		// 	let now = new Date();
+		// 	//时间差
+		// 	let time = Math.floor((date.getTime() - now.getTime())/1000);
+		// 	//天
+		// 	let day = Math.floor(time/60/60/24);
+		// 	arr.push(day);
+		// 	//时
+		// 	let hours = Math.floor(time/60/60%24);
+		// 	arr.push(hours);
+		// 	//分
+		// 	let minutes = Math.floor(time/60%60);
+		// 	arr.push(minutes);
+		// 	//秒
+		// 	let seconds = Math.floor(time%60);
+		// 	arr.push(seconds);
+
+		// 	s.forEach((e,index)=>{
+		// 		s[index].innerText = arr[index];
+		// 	})
+		// }
+
+		//十分钟倒计时
+		let s = document.querySelectorAll('span');
+		let date = new Date();
+		date.setMinutes(date.getMinutes()+10);
+		move();
+		setInterval(move,1000)
+		function move(){
+			let arr = [];
+			let now = new Date();
+			let time = Math.floor((date.getTime() - now.getTime())/1000); 
+			let minutes = Math.floor(time/60);
+			arr.push(minutes);
+			let seconds = Math.floor(time%60);
+			arr.push(seconds);
+			s.forEach((e,index)=>{
+				e.innerText = arr[index];
+			})
+		}
+	})
+</script>
